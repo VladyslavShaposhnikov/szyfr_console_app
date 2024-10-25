@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "szyfr", "szyfr\szyfr.csproj", "{BF446996-7BB2-47E0-B88F-86C6C7FF2C27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "szyfr", "szyfr\szyfr.csproj", "{BF446996-7BB2-47E0-B88F-86C6C7FF2C27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "szyfr_polibiusza", "szyfr_polibiusza\szyfr_polibiusza.csproj", "{466C4CB0-9B35-459F-9ACD-78789F2B5D0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BF446996-7BB2-47E0-B88F-86C6C7FF2C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF446996-7BB2-47E0-B88F-86C6C7FF2C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF446996-7BB2-47E0-B88F-86C6C7FF2C27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{466C4CB0-9B35-459F-9ACD-78789F2B5D0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{466C4CB0-9B35-459F-9ACD-78789F2B5D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{466C4CB0-9B35-459F-9ACD-78789F2B5D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{466C4CB0-9B35-459F-9ACD-78789F2B5D0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

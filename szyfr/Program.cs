@@ -3,17 +3,17 @@
 Console.OutputEncoding = Encoding.UTF8;
 Console.InputEncoding = Encoding.UTF8;
 
-string alfabet = "aąbcćdeęfghijklłmnoópqrsśtuvwxyzźż"; // length = 34
+string alfabet = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż"; // length = 35
 
 Console.WriteLine("naciśnij \"s\" żeby zaszyfrować, albo \"d\" żeby deszyfrować");
 string? option = Console.ReadLine();
-option.ToLower().Trim();
-Console.WriteLine("kod szyfru (większy od 0 mniejszy od 34)");
+option?.ToLower().Trim();
+Console.WriteLine("kod szyfru (większy od 0 mniejszy od 35)");
 string? kodSzyfru = Console.ReadLine();
 int.TryParse(kodSzyfru, out int result);
 if (result >= alfabet.Length || result < 0)
 {
-    Console.WriteLine("Kod szyfru ma być większy od 0 i mniejszy 34 (ilość liter w alfabecie)");
+    Console.WriteLine("Kod szyfru ma być większy od 0 i mniejszy 35 (ilość liter w alfabecie)");
     return;
 }
 Console.WriteLine("Tekst do zaszyfrowania/deszyfrowania");
@@ -21,7 +21,7 @@ string? toChange = Console.ReadLine();
 
 
 string res = "";
-for (int i = 0; i < toChange.Length; i++)
+for (int i = 0; i < toChange?.Length; i++)
 {
     int resultIndex;
     if (alfabet.Contains(toChange[i]))
