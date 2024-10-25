@@ -18,6 +18,7 @@ if (result >= alfabet.Length || result < 0)
 }
 Console.WriteLine("Tekst do zaszyfrowania/deszyfrowania");
 string? toChange = Console.ReadLine();
+toChange?.ToLower().Trim();
 
 
 string res = "";

@@ -7,30 +7,129 @@ string alfabet = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż"; // length = 35
 
 char[,] tab = RandomKeyGeneration(alfabet);
 
-// test code: add each element from random generated key to the string; convert chars to int; edd all chars in both strings; check if results are equal
-string res = ""; 
-int res1 = 0;
-int res2 = 0;
+Console.WriteLine("Tekst do zaszyfrowania/deszyfrowania");
+string? input = Console.ReadLine();
+string toChange = input.ToLower().Trim();
 
-for (int i = 0; i < tab.GetLength(0); i++)
+string result = "";
+
+for (int i = 0; i < toChange?.Length; i++)
 {
-    for (int j = 0; j < tab.GetLength(1); j++)
+    if (alfabet.Contains(toChange[i]))
     {
-        Console.Write(tab[i, j] + " ");
-        res += tab[i, j];
+        result += FindInt(toChange[i]); // replace chars with ints
     }
-    Console.WriteLine();
 }
 
-for (int i = 0; i < alfabet.Length; i++)
+int y = 4; // random number
+int z = 29586034; // random number
+
+long? cipher = Cipher(result); // addition modifying ints
+
+if (cipher is null)
 {
-    res1 += (int)alfabet[i];
-    res2 += (int)res[i];
+    return;
 }
 
-Console.WriteLine(res1 == res2);
-Console.WriteLine(res1 + " = " + res2);
+string backToNormal = GetStringOfInts(cipher.Value);
 
+BackToNormalWords(backToNormal);
+
+
+// test code: add each element from random generated key to the string; convert chars to int; edd all chars in both strings; check if results are equal -------------------
+// uncomment to see array in console
+
+//string res = "";
+//int res1 = 0;
+//int res2 = 0;
+
+//for (int i = 0; i < tab.GetLength(0); i++)
+//{
+//    for (int j = 0; j < tab.GetLength(1); j++)
+//    {
+//        Console.Write(tab[i, j] + " ");
+//        res += tab[i, j];
+//    }
+//    Console.WriteLine();
+//}
+
+//for (int i = 0; i < alfabet.Length; i++)
+//{
+//    res1 += alfabet[i];
+//    res2 += res[i];
+//}
+
+//Console.WriteLine(res1 == res2);
+//Console.WriteLine(res1 + " = " + res2);
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// opposide to Cipher function
+string GetStringOfInts(long unknown)
+{
+    long known = unknown - z;
+    known /= y;
+    known /= 2;
+    return known.ToString();
+}
+
+// make more complicated number and check OverflowException
+long? Cipher(string result)
+{
+    long x;
+    long unknown;
+
+    try
+    {
+        checked
+        {
+            x = long.Parse(result);
+            unknown = x * 2;
+            unknown *= y;
+            unknown += z;
+            return unknown;
+        }
+    }
+    catch (OverflowException)
+    {
+        Console.WriteLine("too long secret...");
+        return null;
+    }
+}
+
+// function turn ints into a normal worlds
+void BackToNormalWords(string toNorm)
+{
+    string toNormal = "";
+    for (int i = 0; i < toNorm.Length; i += 2)
+    {
+        int one = int.Parse(toNorm[i].ToString());
+        int two = int.Parse(toNorm[i + 1].ToString());
+        toNormal += tab[--one, --two];
+    }
+    Console.WriteLine("deszyfr: " + toNormal);
+}
+
+// function that replace char with 2 numbers: nr. of row and nr. of column
+string FindInt(char ch)
+{
+    string resultStr = "";
+
+    for (int i = 0; i < tab.GetLength(0); i++)
+    {
+        for (int j = 0; j < tab.GetLength(1); j++)
+        {
+            if (ch == tab[i, j])
+            {
+                resultStr += (i + 1);
+                resultStr += (j + 1);
+                return resultStr;
+            }
+        }
+    }
+    return resultStr;
+}
 
 // Random key generation function (for 2 demention array 5x7)
 char[,] RandomKeyGeneration(string alf)
